@@ -1,9 +1,27 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
+
+router.get('/', (req, res) =>  {
+    db.tweet.count()
+    .then((count) => {
+        res.send({
+            count: count,
+        })
+    })
+    // comment above and uncomment below to view all tweets
+    //
+    // db.tweet.findAll({
+    //     orderBy: "createdAt"
+    // })
+    // .then((tweets) => {
+    //     res.send({
+    //         tweets: tweets,
+    //     })
+    // })
+    //
 });
 
 module.exports = router;
