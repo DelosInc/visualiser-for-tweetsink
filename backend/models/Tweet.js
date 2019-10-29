@@ -3,11 +3,11 @@
 const Tweet = (sequelize, Sequelize) => { 
     return ( sequelize.define('Tweet', {
         tweetId: { 
-            type: Sequelize.BIGINT, 
+            type: Sequelize.BIGINT(20), 
             primaryKey: true,
         },
         userId: {
-            type: Sequelize.BIGINT,
+            type: Sequelize.BIGINT(20),
         },        
         createdAt: {
             type: Sequelize.DATE,
@@ -19,8 +19,8 @@ const Tweet = (sequelize, Sequelize) => {
             updatedAt: false,
             id: false,
             createdAt: false
-        })
-    );
+        }
+    ));
 };
 
 module.exports = Tweet;
